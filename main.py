@@ -19,13 +19,13 @@ from Ride import Ride
 """
 1.Driver create করব। 
 """
-b=BRTA()
-b.driving_test("nusrat@gmail.com")
-b.driving_test("nusrat1@gmail.com")
-b_result=b.get_license()
-print(b_result)
-for value in b_result:
-    print(value)
+# b=BRTA()
+# b.driving_test("nusrat@gmail.com")
+# b.driving_test("nusrat1@gmail.com")
+# b_result=b.get_license()
+# print(b_result)
+# for value in b_result:
+#     print(value)
 
 # b1=b.driving_test("nusrat@gmail.com")
 

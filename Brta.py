@@ -2,12 +2,28 @@ import random
 class BRTA:
     def driving_test(self,email):
         score=random.randint(0,100)
-        if score>=33:
-            license_number=random.randint(5000,9999)
-            with open("license.txt","a") as f:
+        filtered=[]
+        if score >= 33:
+            license_number = random.randint(5000, 9999)
+
+            # Step-1: Read file
+            with open("license.txt", "r") as f:
+                lines = f.readlines()
+
+            # Step-2: Filter old entry
+            filtered = [line for line in lines if email not in line]
+
+            # Step-3: Rewrite file with updated list
+            with open("license.txt", "w") as f:
+                f.writelines(filtered)
+
+            # Step-4: Append new license info
+            with open("license.txt", "a") as f:
                 f.write(f"{email}:{license_number}\n")
-            print(f"Congrats, you have passed. Your score is {score}. And your license number is {license_number}")
+
+            print(f"Congrats, you passed! Score: {score}, License: {license_number}")
             return license_number
+
         else:
             print(f"Sorry you have failed the test. Your score is {score}")
             return False
@@ -21,8 +37,8 @@ class BRTA:
             return False
 
 b=BRTA()
-# b.driving_test("nusrat@gmail.com")
+b.driving_test("mahadi@gmail.com")
 # b.driving_test("mehedi@gmail.com")
-nu=b.validate_license("akash@gmail.com","9872")
-print(nu)
+# nu=b.validate_license("akash@gmail.com","9872")
+# print(nu)
 
